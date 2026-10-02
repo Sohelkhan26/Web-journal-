@@ -4,21 +4,27 @@
   "compatibility_date": "2026-03-01",
   "compatibility_flags": ["nodejs_compat"],
   "pages_build_output_dir": "dist",
-  // Cloudflare D1 Serverless SQL Database Binding
-  // To create a database, run: npx wrangler d1 create journal_db
-  // Then replace database_id below with your database UUID.
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "journal_db",
-      "database_id": "your-d1-database-id-here"
-    }
-  ],
-  // Optional Cloudflare R2 bucket for large external media
-  "r2_buckets": [
-    {
-      "binding": "ASSETS",
-      "bucket_name": "journal-assets"
-    }
-  ]
+  "build": {
+    "command": "npm run build"
+  }
+  // --- Optional Cloudflare D1 Database Binding ---
+  // To connect remote edge database persistence:
+  // 1. Run: npx wrangler d1 create journal_db
+  // 2. Uncomment the block below and replace database_id with your generated database UUID:
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "journal_db",
+  //     "database_id": "your-d1-database-uuid-here"
+  //   }
+  // ],
+  // --- Optional Cloudflare R2 Storage Bucket ---
+  // Note: 'ASSETS' is a reserved binding name in Cloudflare Pages.
+  // Use a custom name like 'JOURNAL_MEDIA' if you configure R2:
+  // "r2_buckets": [
+  //   {
+  //     "binding": "JOURNAL_MEDIA",
+  //     "bucket_name": "journal-assets"
+  //   }
+  // ]
 }

@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "chronicle-journal",
+  "compatibility_date": "2026-03-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "dist",
+  // Cloudflare D1 Serverless SQL Database Binding
+  // To create a database, run: npx wrangler d1 create journal_db
+  // Then replace database_id below with your database UUID.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "journal_db",
+      "database_id": "your-d1-database-id-here"
+    }
+  ],
+  // Optional Cloudflare R2 bucket for large external media
+  "r2_buckets": [
+    {
+      "binding": "ASSETS",
+      "bucket_name": "journal-assets"
+    }
+  ]
+}

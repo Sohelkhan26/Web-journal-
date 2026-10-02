@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Privacy notice: Private journal entries are client-side only and not indexed.

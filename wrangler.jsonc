@@ -1,11 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "chronicle-journal",
+  "name": "web-journal",
+  "main": "functions/worker.ts",
   "compatibility_date": "2026-03-01",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": "dist",
   "build": {
     "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
   }
   // --- Optional Cloudflare D1 Database Binding ---
   // To connect remote edge database persistence:
@@ -16,15 +20,6 @@
   //     "binding": "DB",
   //     "database_name": "journal_db",
   //     "database_id": "your-d1-database-uuid-here"
-  //   }
-  // ],
-  // --- Optional Cloudflare R2 Storage Bucket ---
-  // Note: 'ASSETS' is a reserved binding name in Cloudflare Pages.
-  // Use a custom name like 'JOURNAL_MEDIA' if you configure R2:
-  // "r2_buckets": [
-  //   {
-  //     "binding": "JOURNAL_MEDIA",
-  //     "bucket_name": "journal-assets"
   //   }
   // ]
 }
